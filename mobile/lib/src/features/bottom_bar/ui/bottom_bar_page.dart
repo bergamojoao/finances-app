@@ -19,7 +19,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            Expanded(child: RouterOutlet()),
+            RouterOutlet(),
             BottomBar(),
           ],
         ),

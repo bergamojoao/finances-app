@@ -14,21 +14,16 @@ export class GoogleAuthenticationService {
     private readonly prisma: PrismaService,
     private readonly configService: ConfigService,
     private readonly httpService: HttpService,
-    private readonly jwtService: JwtService
-    //private readonly authenticationService: AuthenticationService
+    private readonly jwtService: JwtService, //private readonly authenticationService: AuthenticationService
   ) {
     const clientID = this.configService.get('GOOGLE_AUTH_CLIENT_ID');
     const clientSecret = this.configService.get('GOOGLE_AUTH_CLIENT_SECRET');
 
-    this.oauthClient = new google.auth.OAuth2(
-      clientID,
-      clientSecret
-    );
+    this.oauthClient = new google.auth.OAuth2(clientID, clientSecret);
   }
 
   async authenticate(token: string) {
     try {
-
       const tokenInfo = await this.oauthClient.getTokenInfo(token);
 
       const email = tokenInfo.email;
@@ -38,19 +33,29 @@ export class GoogleAuthenticationService {
       const jwtSecret = this.configService.get('JWT_SECRET');
 
       if (user) {
-        const token = await this.jwtService.signAsync({ id: user.id }, { secret: jwtSecret, expiresIn: '7d' });
+        const token = await this.jwtService.signAsync(
+          { id: user.id },
+          { secret: jwtSecret, expiresIn: '7d' },
+        );
 
         return { token, ...user };
       }
 
-      const response = await this.httpService.axiosRef.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      const response = await this.httpService.axiosRef.get(
+        'https://www.googleapis.com/oauth2/v3/userinfo',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
       if (response.status === 200) {
-        const { given_name: name, family_name: lastName, picture } = response.data;
+        const {
+          given_name: name,
+          family_name: lastName,
+          picture,
+        } = response.data;
 
         const { password: _, ...user } = await this.prisma.user.create({
           data: {
@@ -58,10 +63,13 @@ export class GoogleAuthenticationService {
             name: name + ' ' + lastName,
             picture,
             role: 'user',
-          }
+          },
         });
 
-        const token = await this.jwtService.signAsync({ id: user.id }, { secret: jwtSecret, expiresIn: '7d' });
+        const token = await this.jwtService.signAsync(
+          { id: user.id },
+          { secret: jwtSecret, expiresIn: '7d' },
+        );
 
         return { token, ...user };
       }

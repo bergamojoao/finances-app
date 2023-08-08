@@ -23,9 +23,9 @@ class _MainAppState extends State<MainApp> {
     _subscription = context.read<AuthBloc>().stream.listen(
       (state) {
         if (state is LoggedInAuthState) {
-          Modular.to.navigate('/bottom_bar/home/');
+          Modular.to.navigate('/bottom_bar/finances/');
         } else if (state is LoggedOutAuthState) {
-          Modular.to.navigate('/auth/login/');
+          Modular.to.navigate('/auth/login');
         }
       },
     );
@@ -47,7 +47,7 @@ class _MainAppState extends State<MainApp> {
       debugShowCheckedModeBanner: false,
       title: 'Finances App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
     );

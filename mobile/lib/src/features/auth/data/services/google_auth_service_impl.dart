@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:finances_app/src/core/utils/api_services.dart';
+import 'package:finances_app/src/core/configs/api_config.dart';
 import 'package:finances_app/src/features/auth/interactor/services/google_auth_service.dart';
 import 'package:finances_app/src/features/auth/interactor/states/auth_state.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../interactor/entities/user_entity.dart';
 
 class GoogleAuthServiceImpl implements GoogleAuthService {
-  final api = ApiService.api;
+  final api = ApiConfig.api;
 
   final _googleSignIn = GoogleSignIn();
 

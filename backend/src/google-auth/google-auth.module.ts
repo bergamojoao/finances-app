@@ -12,6 +12,13 @@ import { JwtService } from '@nestjs/jwt';
 @Module({
   imports: [UsersModule, HttpModule],
   controllers: [GoogleAuthenticationController],
-  providers: [ConfigService, JwtService, PrismaService, BcryptService, GoogleAuthenticationService, UsersService]
+  providers: [
+    ConfigService,
+    JwtService,
+    PrismaService,
+    BcryptService,
+    GoogleAuthenticationService,
+    UsersService,
+  ],
 })
-export class GoogleAuthenticationModule { }
+export class GoogleAuthenticationModule {}

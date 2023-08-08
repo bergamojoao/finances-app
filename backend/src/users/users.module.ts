@@ -8,6 +8,12 @@ import { ConfigService } from '@nestjs/config';
 
 @Module({
   controllers: [UsersController],
-  providers: [JwtService, ConfigService, PrismaService, BcryptService, UsersService],
+  providers: [
+    JwtService,
+    ConfigService,
+    PrismaService,
+    BcryptService,
+    UsersService,
+  ],
 })
-export class UsersModule { }
+export class UsersModule {}

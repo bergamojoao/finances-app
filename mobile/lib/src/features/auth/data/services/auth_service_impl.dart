@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../core/utils/api_services.dart';
+import '../../../../core/configs/api_config.dart';
 import '../../interactor/dtos/signup_dto.dart';
 import '../../interactor/entities/user_entity.dart';
 import '../../interactor/services/auth_service.dart';
@@ -11,7 +11,7 @@ import '../../interactor/states/auth_state.dart';
 import '../../interactor/states/signup_state.dart';
 
 class AuthServiceImpl implements AuthService {
-  final api = ApiService.api;
+  final api = ApiConfig.api;
 
   @override
   Future<AuthState> getUser() async {
@@ -90,7 +90,7 @@ class AuthServiceImpl implements AuthService {
     } on DioException catch (e) {
       log(e.toString());
       return FailedSignupState(
-        ApiService.apiErrorMessagesToString(e.response) ??
+        ApiConfig.apiErrorMessagesToString(e.response) ??
             'Erro ao se cadastrar.',
       );
     }

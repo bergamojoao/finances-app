@@ -6,10 +6,17 @@ import { UsersModule } from './users/users.module';
 import { PrismaService } from './services/prisma.service';
 import { GoogleAuthenticationModule } from './google-auth/google-auth.module';
 import { AuthModule } from './auth/auth.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), UsersModule, GoogleAuthenticationModule, AuthModule],
+  imports: [
+    ConfigModule.forRoot(),
+    UsersModule,
+    GoogleAuthenticationModule,
+    AuthModule,
+    TransactionsModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
-export class AppModule { }
+export class AppModule {}

@@ -6,10 +6,10 @@ import { BcryptService } from 'src/services/bcrypt.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService, private bcrypt: BcryptService) { }
+  constructor(private prisma: PrismaService, private bcrypt: BcryptService) {}
 
   async create(createUserDto: CreateUserDto) {
-    var { password: _, ...result } = await this.prisma.user.create({
+    const { password: _, ...result } = await this.prisma.user.create({
       data: {
         name: createUserDto.name,
         email: createUserDto.email,
@@ -22,7 +22,7 @@ export class UsersService {
   }
 
   async findAll() {
-    var users = await this.prisma.user.findMany({
+    const users = await this.prisma.user.findMany({
       select: {
         id: true,
         name: true,
@@ -36,7 +36,7 @@ export class UsersService {
   }
 
   async findOne(id: string) {
-    var { password: _, ...user } = await this.prisma.user.findFirst({
+    const { password: _, ...user } = await this.prisma.user.findFirst({
       where: { id },
     });
     return user;
@@ -50,7 +50,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    var { password: _, ...user } = await this.prisma.user.update({
+    const { password: _, ...user } = await this.prisma.user.update({
       data: {
         name: updateUserDto.name,
         email: updateUserDto.email,

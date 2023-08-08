@@ -11,14 +11,28 @@ datasource db {
 }
 
 model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  phone        String?
+  password     String?
+  name         String
+  role         String
+  picture      String?
+  active       Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+}
+
+model Transaction {
   id        String   @id @default(uuid())
-  email     String   @unique
-  phone     String?
-  password  String?
-  name      String
-  role      String
-  picture   String?
+  user      User     @relation(fields: [userId], references: [id])
+  date      DateTime @db.Date
+  type      String
+  category  String
+  value     Float
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  userId    String
 }

@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: auto_injector
-      sha256: da17c99bd1ea92fb2ed442f76812792cdb5de914d74b276a00add42b1e561251
+      sha256: "987c1041d346fdd25838f487677ce1fcdf9c2c72e18650bde73a9876f940cbad"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0+4"
+    version: "1.1.1"
   bloc:
     dependency: transitive
     description:
@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  currency_text_input_formatter:
+    dependency: "direct main"
+    description:
+      name: currency_text_input_formatter
+      sha256: "5d8db755ccde76817f6f5fb33e65304d7b1db442e1ccff079fe235584c6b7d5a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.10"
   dio:
     dependency: "direct main"
     description:
@@ -73,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.3.0"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -122,10 +138,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_modular
-      sha256: a4c56acc3b98a177a670cf0d5ac8def6cd1dadb12882a38bdee3d04235c45436
+      sha256: "70002f67c54a1e48bd44e84d0c08526a15f8a671c9a56e69d1f5cdfdf0270395"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0+2"
+    version: "6.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -200,6 +216,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -244,10 +268,10 @@ packages:
     dependency: transitive
     description:
       name: modular_core
-      sha256: e71c80b381a5c2825dc342c1b276dd4c92f4f6eced08a59222529081624b371a
+      sha256: "44932cc2b30725be91814a45c4cc44634a7465df2b8109a671156a2d48f24acf"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0+1"
+    version: "3.0.2+1"
   nested:
     dependency: transitive
     description:
